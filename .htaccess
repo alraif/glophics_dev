@@ -18,4 +18,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /glophics_dev/index.php [L]
 </IfModule>
 
-# END WordPress 
+# END WordPress
