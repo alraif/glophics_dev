@@ -2307,18 +2307,18 @@ function comment_form( $args = array(), $post_id = null ) {
 				$html_req
 			)
 		),
-		'url'    => sprintf(
-			'<p class="comment-form-url">%s %s</p>',
-			sprintf(
-				'<label for="url">%s</label>',
-				__( 'Website' )
-			),
-			sprintf(
-				'<input id="url" name="url" %s value="%s" size="30" maxlength="200" />',
-				( $html5 ? 'type="url"' : 'type="text"' ),
-				esc_attr( $commenter['comment_author_url'] )
-			)
-		),
+		// 'url'    => sprintf(
+		// 	'<p class="comment-form-url">%s %s</p>',
+		// 	sprintf(
+		// 		'<label for="url">%s</label>',
+		// 		__( 'Website' )
+		// 	),
+		// 	sprintf(
+		// 		'<input id="url" name="url" %s value="%s" size="30" maxlength="200" />',
+		// 		( $html5 ? 'type="url"' : 'type="text"' ),
+		// 		esc_attr( $commenter['comment_author_url'] )
+		// 	)
+		// ),
 	);
 
 	if ( has_action( 'set_comment_cookies', 'wp_set_comment_cookies' ) && get_option( 'show_comments_cookies_opt_in' ) ) {
@@ -2523,7 +2523,7 @@ function comment_form( $args = array(), $post_id = null ) {
 			endif;
 
 			// Prepare an array of all fields, including the textarea.
-			$comment_fields = array( 'comment' => $args['comment_field'] ) + (array) $args['fields'];
+			$comment_fields =  (array) $args['fields'] + array( 'comment' => $args['comment_field'] );
 
 			/**
 			 * Filters the comment form fields, including the textarea.
