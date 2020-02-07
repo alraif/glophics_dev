@@ -16,8 +16,8 @@
 	<?php endwhile; ?>
 
 	<div id="nav-below" class="navigation">
-		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'twentynineteen' ) . '</span> %title' ); ?></div>
-		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentynineteen' ) . '</span>' ); ?></div>
+		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'twentytwenty' ) . '</span> %title' ); ?></div>
+		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentytwenty' ) . '</span>' ); ?></div>
 	</div>
 
 <?php else : ?>
