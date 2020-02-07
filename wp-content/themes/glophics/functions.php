@@ -1,43 +1,59 @@
 <?php
 /**
- * Twenty Nineteen functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage Twenty_Nineteen
- * @since 1.0.0
- */
-
-/**
- * Twenty Nineteen only works in WordPress 4.7 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
-	require get_template_directory() . '/inc/back-compat.php';
-	return;
-}
-
-/**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function twentynineteen_widgets_init() {
+function twentytwenty_sidebar_registration() {
 
+	// Arguments used in all register_sidebar() calls.
+	$shared_args = array(
+		'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
+		'after_title'   => '</h2>',
+		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
+		'after_widget'  => '</div></div>',
+	);
+
+	// Footer #1.
 	register_sidebar(
-		array(
-			'name'          => __( 'Footer', 'twentynineteen' ),
-			'id'            => 'sidebar-1',
-			'description'   => __( 'Add widgets here to appear in your footer.', 'twentynineteen' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+		array_merge(
+			$shared_args,
+			array(
+				'name'        => __( 'Footer #1', 'twentytwenty' ),
+				'id'          => 'sidebar-1',
+				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+			)
+		)
+	);
+
+	// Footer #2.
+	register_sidebar(
+		array_merge(
+			$shared_args,
+			array(
+				'name'        => __( 'Footer #2', 'twentytwenty' ),
+				'id'          => 'sidebar-2',
+				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
+			)
 		)
 	);
 
 }
-add_action( 'widgets_init', 'twentynineteen_widgets_init' );
+
+add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
+
+/* Start of Custom Excerpt */
+function custom_excerpt_length( $length ) {
+	return 100;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more($more) {
+	global $post;
+	return '<a class="moretag" href="'. get_permalink($post->ID) . '">... Read More &raquo;</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+/* End of Custom Excerpt */
 
 /** Start of WordPress Team Used Functions **/
 
