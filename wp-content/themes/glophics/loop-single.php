@@ -7,6 +7,7 @@
 			<div class="blog_post">
 				<?php the_content(); ?>
 			</div>
+			<?php comments_template( '', true ); ?>
 			<div class="blog_metas">
 				<?php the_category(); ?>
 				<?php the_tags(); ?>
